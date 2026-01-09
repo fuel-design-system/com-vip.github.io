@@ -2,16 +2,16 @@
 
 ## ✅ Problema Identificado e Corrigido
 
-O problema era que o `vite.config.ts` estava configurado com `base: '/'`, mas deveria ser `base: '/transacional.github.io/'` para o GitHub Pages funcionar.
+O problema era que o `vite.config.ts` estava configurado com `base: '/'`, mas deveria ser `base: '/com-vip.github.io/'` para o GitHub Pages funcionar.
 
 Isso fazia com que os arquivos JS/CSS fossem carregados do lugar errado:
 - ❌ Tentava: `https://fuel-design-system.github.io/assets/index.js`
-- ✅ Correto: `https://fuel-design-system.github.io/transacional.github.io/assets/index.js`
+- ✅ Correto: `https://fuel-design-system.github.io/com-vip.github.io/assets/index.js`
 
 ## 🔧 Correções Aplicadas
 
-1. ✅ `vite.config.ts` - Atualizado `base: '/transacional.github.io/'`
-2. ✅ `src/App.tsx` - Adicionado `basename="/transacional.github.io"` no BrowserRouter
+1. ✅ `vite.config.ts` - Atualizado `base: '/com-vip.github.io/'`
+2. ✅ `src/App.tsx` - Adicionado `basename="/com-vip.github.io"` no BrowserRouter
 3. ✅ `public/sw.js` - Service Worker atualizado (v21) para não cachear arquivos com hash
 4. ✅ `public/force-reload.html` - Criado para limpar cache automaticamente
 5. ✅ Build já foi feito com as configurações corretas
@@ -38,7 +38,7 @@ Isso fazia com que os arquivos JS/CSS fossem carregados do lugar errado:
 
 4. **Aguarde alguns minutos** e acesse:
    ```
-   https://fuel-design-system.github.io/transacional.github.io/
+   https://fuel-design-system.github.io/com-vip.github.io/
    ```
 
 ### Opção 2: Deploy com GitHub Actions (Recomendado)
@@ -110,7 +110,7 @@ jobs:
 
 5. **Acesse:**
    ```
-   https://fuel-design-system.github.io/transacional.github.io/
+   https://fuel-design-system.github.io/com-vip.github.io/
    ```
 
 ## 🎯 Após o Deploy
@@ -120,7 +120,7 @@ jobs:
 Compartilhe este link com quem estiver vendo tela em branco:
 
 ```
-https://fuel-design-system.github.io/transacional.github.io/force-reload.html
+https://fuel-design-system.github.io/com-vip.github.io/force-reload.html
 ```
 
 Esta página vai:
@@ -134,21 +134,21 @@ Acesse cada uma destas URLs e verifique:
 
 1. **Página inicial:**
    ```
-   https://fuel-design-system.github.io/transacional.github.io/
+   https://fuel-design-system.github.io/com-vip.github.io/
    ```
    - ✅ Deve mostrar a lista de fretes
    - ✅ Sem erros no console (F12)
 
 2. **Página de detalhes (exemplo):**
    ```
-   https://fuel-design-system.github.io/transacional.github.io/freight/1
+   https://fuel-design-system.github.io/com-vip.github.io/freight/1
    ```
    - ✅ Deve mostrar os detalhes do frete
    - ✅ Botão "voltar" deve funcionar
 
 3. **Force reload (limpar cache):**
    ```
-   https://fuel-design-system.github.io/transacional.github.io/force-reload.html
+   https://fuel-design-system.github.io/com-vip.github.io/force-reload.html
    ```
    - ✅ Deve mostrar a página de limpeza
    - ✅ Deve limpar cache e redirecionar
@@ -167,8 +167,8 @@ Acesse cada uma destas URLs e verifique:
 
 3. **Verifique os arquivos deployados:**
    - Abra o `index.html` na pasta deployada
-   - Verifique se os imports têm `/transacional.github.io/` no path
-   - Exemplo: `<script src="/transacional.github.io/assets/index-ABC.js">`
+   - Verifique se os imports têm `/com-vip.github.io/` no path
+   - Exemplo: `<script src="/com-vip.github.io/assets/index-ABC.js">`
 
 ### Erros 404 nos assets?
 
@@ -182,7 +182,7 @@ npm run build
 # Verifique se o dist/index.html tem os paths corretos
 cat dist/index.html
 
-# Os scripts devem ter: /transacional.github.io/assets/...
+# Os scripts devem ter: /com-vip.github.io/assets/...
 # Se não tiver, algo está errado no vite.config.ts
 ```
 
@@ -191,7 +191,7 @@ cat dist/index.html
 Verifique se:
 1. O arquivo `public/404.html` foi copiado para `dist/404.html`
 2. O GitHub Pages está configurado corretamente
-3. O `BrowserRouter` tem `basename="/transacional.github.io"`
+3. O `BrowserRouter` tem `basename="/com-vip.github.io"`
 
 ## 📋 Checklist Final
 
@@ -200,7 +200,7 @@ Antes de considerar o deploy concluído:
 - [ ] Build feito com sucesso (`npm run build`)
 - [ ] Arquivos commitados e pushed
 - [ ] GitHub Pages configurado (Settings > Pages)
-- [ ] Site carrega em: `https://fuel-design-system.github.io/transacional.github.io/`
+- [ ] Site carrega em: `https://fuel-design-system.github.io/com-vip.github.io/`
 - [ ] Navegação entre rotas funciona
 - [ ] Hard refresh mantém a página
 - [ ] `/force-reload.html` está acessível
@@ -211,13 +211,13 @@ Antes de considerar o deploy concluído:
 Se tudo funcionou, seu site está no ar em:
 
 ```
-https://fuel-design-system.github.io/transacional.github.io/
+https://fuel-design-system.github.io/com-vip.github.io/
 ```
 
 Se alguém ver tela em branco, compartilhe:
 
 ```
-https://fuel-design-system.github.io/transacional.github.io/force-reload.html
+https://fuel-design-system.github.io/com-vip.github.io/force-reload.html
 ```
 
 ## 📞 Precisa de Ajuda?
