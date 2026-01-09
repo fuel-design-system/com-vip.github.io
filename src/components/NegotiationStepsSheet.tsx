@@ -95,12 +95,19 @@ export default function NegotiationStepsSheet({ isOpen, onClose, currentStep }: 
             {/* Step 3 - Fechamento */}
             <div className="step-item">
               <div className="step-row">
-                <div className={`step-badge ${currentStep >= 3 ? 'active' : 'inactive'}`}>
-                  <span>3</span>
+                <div className={`step-badge ${currentStep >= 3 ? 'completed' : 'inactive'}`}>
+                  {currentStep >= 3 ? (
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="40" height="40" rx="20" fill="#0C884C"/>
+                      <path d="M17.5951 27L12 21.3119L13.3988 19.8898L17.5951 24.1559L26.6012 15L28 16.422L17.5951 27Z" fill="white"/>
+                    </svg>
+                  ) : (
+                    <span>3</span>
+                  )}
                 </div>
                 <div className="step-content">
-                  <div className={`step-title ${currentStep >= 3 ? 'active' : ''}`}>Fechamento do frete</div>
-                  <div className={`step-description ${currentStep >= 3 ? 'active' : ''}`}>
+                  <div className={`step-title ${currentStep >= 3 ? 'muted' : ''}`}>Fechamento do frete</div>
+                  <div className={`step-description ${currentStep >= 3 ? '' : ''}`}>
                     Faça a coleta e receba o adiantamento no Pix da sua Carteira Fretebras.
                   </div>
                 </div>
