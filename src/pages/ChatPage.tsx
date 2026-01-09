@@ -265,7 +265,8 @@ export default function ChatPage() {
 
           setMessages(prev => [...prev, documentMessage]);
 
-          // Move para o step 2 (Documentos) quando a mensagem de documento aparecer
+          // Marca o step 1 (Negociação) como concluído e move para o step 2 (Documentos)
+          setCompletedTabs(prev => prev.includes(1) ? prev : [...prev, 1]);
           setCurrentStep(2);
         }, 2000);
       }
