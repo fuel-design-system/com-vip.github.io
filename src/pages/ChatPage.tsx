@@ -906,6 +906,7 @@ export default function ChatPage() {
         isOpen={isStepsSheetOpen}
         onClose={() => setIsStepsSheetOpen(false)}
         currentStep={currentStep}
+        completedTabs={completedTabs}
       />
     </div>
   );

@@ -5,9 +5,10 @@ interface NegotiationStepsSheetProps {
   isOpen: boolean;
   onClose: () => void;
   currentStep: number;
+  completedTabs?: number[];
 }
 
-export default function NegotiationStepsSheet({ isOpen, onClose, currentStep }: NegotiationStepsSheetProps) {
+export default function NegotiationStepsSheet({ isOpen, onClose, currentStep, completedTabs = [] }: NegotiationStepsSheetProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -95,8 +96,8 @@ export default function NegotiationStepsSheet({ isOpen, onClose, currentStep }: 
             {/* Step 3 - Fechamento */}
             <div className="step-item">
               <div className="step-row">
-                <div className={`step-badge ${currentStep >= 3 ? 'completed' : 'inactive'}`}>
-                  {currentStep >= 3 ? (
+                <div className={`step-badge ${completedTabs.includes(3) ? 'completed' : currentStep >= 3 ? 'active' : 'inactive'}`}>
+                  {completedTabs.includes(3) ? (
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="40" height="40" rx="20" fill="#0C884C"/>
                       <path d="M17.5951 27L12 21.3119L13.3988 19.8898L17.5951 24.1559L26.6012 15L28 16.422L17.5951 27Z" fill="white"/>
@@ -106,8 +107,8 @@ export default function NegotiationStepsSheet({ isOpen, onClose, currentStep }: 
                   )}
                 </div>
                 <div className="step-content">
-                  <div className={`step-title ${currentStep >= 3 ? 'muted' : ''}`}>Fechamento do frete</div>
-                  <div className={`step-description ${currentStep >= 3 ? '' : ''}`}>
+                  <div className={`step-title ${completedTabs.includes(3) ? 'muted' : currentStep >= 3 ? 'active' : ''}`}>Fechamento do frete</div>
+                  <div className={`step-description ${completedTabs.includes(3) ? '' : currentStep >= 3 ? 'active' : ''}`}>
                     Faça a coleta e receba o adiantamento no Pix da sua Carteira Fretebras.
                   </div>
                 </div>
@@ -126,8 +127,8 @@ export default function NegotiationStepsSheet({ isOpen, onClose, currentStep }: 
               <path opacity="0.05" d="M10.5096 12L10.5096 24L0.0330103 18L10.5096 12Z" fill="#111111"/>
               <path d="M10.6076 6L15.857 9V15L10.6076 18L5.35823 15V9L10.6076 6Z" fill="#FFE5A0"/>
             </svg>
-            <div className={`points-text ${currentStep >= 3 ? 'completed' : ''}`}>
-              {currentStep >= 3 ? 'Você ganhou + 55 pontos. Parabéns!' : '+55 pontos ao concluir todas as etapas.'}
+            <div className={`points-text ${completedTabs.includes(3) ? 'completed' : ''}`}>
+              {completedTabs.includes(3) ? 'Você ganhou + 55 pontos. Parabéns!' : '+55 pontos ao concluir todas as etapas.'}
             </div>
           </div>
         </div>
