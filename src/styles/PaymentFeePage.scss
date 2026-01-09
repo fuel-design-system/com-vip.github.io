@@ -52,15 +52,6 @@
       margin: 0;
     }
 
-    .content-container {
-      display: flex;
-      flex-direction: column;
-      gap: $space-4;
-      background: $bg-default;
-      border-radius: 16px;
-      padding: $space-4;
-    }
-
     .vip-fee-card {
       display: flex;
       flex-direction: column;
