@@ -52,7 +52,7 @@ export default function DocumentsPage() {
             <div className="document-item">
               <div className="item-row">
                 <div className="avatar-image">
-                  <img src="https://cdn.builder.io/api/v1/image/assets%2F7de6902bb7ea42d4be5082a42dd00e60%2Fd2326185d8c14e199fd0ea93d543d691?format=webp&width=800" alt="Veículo" />
+                  <img src="https://cdn.builder.io/api/v1/image/assets%2F7de6902bb7ea42d4be5082a42dd00e60%2F28dc1a1441744cc38628c885631b1b6f?format=webp&width=800" alt="Veículo" />
                 </div>
                 <div className="item-info">
                   <div className="item-title">Veículo</div>
@@ -75,7 +75,7 @@ export default function DocumentsPage() {
                 </div>
                 <div className="item-info">
                   <div className="item-title">Seu Pix</div>
-                  <div className="item-description">(11) 9 9999-8888</div>
+                  <div className="item-description">41226f99-2f4f-486d-b515-b0b223</div>
                   <button className="link-button">Alterar</button>
                 </div>
                 <div className="required-badge">Obrigatório</div>
