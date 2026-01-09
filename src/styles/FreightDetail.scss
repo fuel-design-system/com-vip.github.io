@@ -217,7 +217,7 @@
     .fee-details {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
 
       .fee-left {
         display: flex;
@@ -239,15 +239,36 @@
           font-weight: 500;
           line-height: 160%;
           text-decoration: underline;
+          max-width: 84px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
 
-      .fee-price {
-        color: #111;
-        font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 150%;
+      .fee-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 2px;
+
+        .fee-price-striked {
+          color: #111;
+          font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 150%;
+          text-decoration: line-through;
+        }
+
+        .fee-free {
+          color: #111;
+          font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 150%;
+        }
       }
     }
 
@@ -257,10 +278,6 @@
     }
 
     .vip-section {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-
       .vip-info {
         display: flex;
         justify-content: center;
@@ -270,6 +287,7 @@
         svg {
           width: 20px;
           height: 20px;
+          flex-shrink: 0;
         }
 
         .vip-text {
@@ -280,25 +298,6 @@
           font-weight: 700;
           line-height: 160%;
         }
-      }
-
-      .vip-button {
-        display: flex;
-        min-width: 64px;
-        min-height: 48px;
-        padding: 0 16px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 500px;
-        background: rgba(0, 43, 92, 0.06);
-        border: none;
-        cursor: pointer;
-        color: #111;
-        text-align: center;
-        font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 150%;
       }
     }
   }
