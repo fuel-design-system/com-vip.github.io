@@ -78,6 +78,10 @@ export default function ChatPage() {
   });
   const [isRouteCardExpanded, setIsRouteCardExpanded] = useState(false);
   const [isStepsSheetOpen, setIsStepsSheetOpen] = useState(false);
+  const [hasClickedDocumentButton, setHasClickedDocumentButton] = useState(() => {
+    const saved = sessionStorage.getItem(`${chatStorageKey}_hasClickedDocButton`);
+    return saved ? JSON.parse(saved) : false;
+  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasAddedDocumentMessage = useRef(false);
 
@@ -101,6 +105,10 @@ export default function ChatPage() {
   useEffect(() => {
     sessionStorage.setItem(`${chatStorageKey}_completedTabs`, JSON.stringify(completedTabs));
   }, [completedTabs, chatStorageKey]);
+
+  useEffect(() => {
+    sessionStorage.setItem(`${chatStorageKey}_hasClickedDocButton`, JSON.stringify(hasClickedDocumentButton));
+  }, [hasClickedDocumentButton, chatStorageKey]);
 
   // Busca os dados do frete
   const freight = freightsData.find(f => f.id === Number(freightId));
@@ -256,6 +264,9 @@ export default function ChatPage() {
           };
 
           setMessages(prev => [...prev, documentMessage]);
+
+          // Move para o step 2 (Documentos) quando a mensagem de documento aparecer
+          setCurrentStep(2);
         }, 2000);
       }
     },
@@ -517,7 +528,10 @@ export default function ChatPage() {
                         <span className="sender-name-bold">{msg.senderName}</span> {msg.text}
                       </div>
                       <div className="document-action">
-                        <button className="document-button" onClick={() => navigate(`/freight/${freightId}/chat/${contactId}/documents`)}>
+                        <button className="document-button" onClick={() => {
+                          setHasClickedDocumentButton(true);
+                          navigate(`/freight/${freightId}/chat/${contactId}/documents`);
+                        }}>
                           Liberar meus documentos
                         </button>
                       </div>
@@ -737,7 +751,10 @@ export default function ChatPage() {
               onClick={() => handleStepChange(2)}
             >
               <div className="step-badge-wrapper">
-                {currentStep === 2 && !completedTabs.includes(2) && (
+                {currentStep === 2 && !completedTabs.includes(2) && !hasClickedDocumentButton && (
+                  <div className="pulse"></div>
+                )}
+                {currentStep === 2 && !completedTabs.includes(2) && hasClickedDocumentButton && (
                   <>
                     <div className="pulse"></div>
                     <div className="clock-icon">
