@@ -51,10 +51,8 @@ export default function DocumentsPage() {
             {/* Veículo */}
             <div className="document-item">
               <div className="item-row">
-                <div className="icon-container">
-                  <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.76051 18.4799C5.39885 18.4799 5.09344 18.3534 4.84428 18.1004C4.59494 17.8476 4.47026 17.5389 4.47026 17.1744V8.78577H2.52051V7.49577H7.14551V6.68327H17.8538V7.49577H22.4788V8.78577H20.5291V17.1744C20.5291 17.5389 20.4044 17.8476 20.155 18.1004C19.9059 18.3534 19.6005 18.4799 19.2388 18.4799C18.8772 18.4799 18.5718 18.3534 18.3226 18.1004C18.0733 17.8476 17.9486 17.5389 17.9486 17.1744V17.0924H7.05101V17.1744C7.05101 17.5389 6.92633 17.8476 6.67698 18.1004C6.42781 18.3534 6.12218 18.4799 5.76051 18.4799ZM5.76051 11.9299V15.8024H19.2388V11.9299H5.76051ZM7.68426 10.6399H9.77676V8.78577H7.68426V10.6399ZM15.2225 10.6399H17.315V8.78577H15.2225V10.6399Z" fill="#636B7E"/>
-                  </svg>
+                <div className="avatar-image">
+                  <img src="https://cdn.builder.io/api/v1/image/assets%2F7de6902bb7ea42d4be5082a42dd00e60%2F28dc1a1441744cc38628c885631b1b6f?format=webp&width=800" alt="Veículo" />
                 </div>
                 <div className="item-info">
                   <div className="item-title">Veículo</div>
