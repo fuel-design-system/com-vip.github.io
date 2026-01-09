@@ -1,0 +1,58 @@
+@use 'tokens' as *;
+
+.payment-loading-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-weak;
+
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .loading-spinner {
+      width: 32px;
+      height: 32px;
+      animation: spin 1s linear infinite;
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    .loading-text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+
+      .loading-text {
+        color: $text-strong;
+        text-align: center;
+        font-family: $font-satoshi;
+        font-size: 24px;
+        font-weight: $font-weight-medium;
+        line-height: 1.3;
+        letter-spacing: -0.96px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .payment-loading-page {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}

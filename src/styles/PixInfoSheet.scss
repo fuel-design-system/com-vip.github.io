@@ -1,0 +1,279 @@
+@use 'tokens' as *;
+
+.sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.pix-info-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $bg-default;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 6px 12px -6px rgba(38, 47, 74, 0.12), 0 8px 24px -4px rgba(38, 47, 74, 0.08);
+  max-height: 90vh;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &.open {
+    transform: translateY(0);
+  }
+
+  .sheet-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    padding: 0 0 $space-6;
+    overflow-y: auto;
+    max-height: 90vh;
+
+    .sheet-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-2;
+      position: sticky;
+      top: 0;
+      background: $bg-default;
+      z-index: 1;
+      padding-bottom: $space-5;
+
+      .sheet-top-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        align-self: stretch;
+        position: relative;
+        padding-top: $space-2;
+
+        .close-button {
+          display: flex;
+          width: 24px;
+          height: 24px;
+          padding: 4px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          transition: background 0.2s;
+          position: absolute;
+          right: $space-4;
+          top: $space-2;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.05);
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .sheet-handle {
+          width: 48px;
+          height: 4px;
+          border-radius: 50px;
+          background: rgba(0, 0, 0, 0.3);
+          margin: 0 auto;
+        }
+      }
+
+      .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-4;
+        align-self: stretch;
+        padding: 0 $space-4;
+
+        .pix-icon-large {
+          display: flex;
+          width: 56px;
+          height: 56px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 6.4px;
+          background: $color-surface-primary-weakest;
+
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        .sheet-title {
+          color: $text-strong;
+          font-family: $font-satoshi;
+          font-size: $font-size-xl;
+          font-weight: $font-weight-medium;
+          line-height: 130%;
+          letter-spacing: -0.8px;
+          margin: 0;
+        }
+      }
+    }
+
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-3;
+      padding: 0 $space-4;
+
+      .step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-4;
+        align-self: stretch;
+
+        .step-number {
+          display: flex;
+          width: 40px;
+          height: 40px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background: #F5F5F5;
+          color: $text-strong;
+          text-align: center;
+          font-family: $font-satoshi;
+          font-size: $font-size-sm;
+          font-weight: $font-weight-medium;
+          line-height: 150%;
+          flex-shrink: 0;
+        }
+
+        .step-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: $space-3;
+          flex: 1;
+
+          .step-description {
+            color: $text-strong;
+            font-family: $font-satoshi;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            line-height: 150%;
+            margin: 0;
+
+            .text-medium {
+              color: $text-medium;
+              font-weight: $font-weight-medium;
+            }
+
+            .text-bold {
+              color: $text-strong;
+              font-weight: $font-weight-bold;
+            }
+
+            .text-strong {
+              color: $text-strong;
+              font-weight: $font-weight-medium;
+            }
+          }
+
+          .info-box {
+            display: flex;
+            align-items: center;
+            gap: $space-2;
+            align-self: stretch;
+            border-radius: 8px;
+            background: rgba(0, 43, 92, 0.06);
+            padding: $space-2;
+
+            svg {
+              width: 16px;
+              height: 16px;
+              flex-shrink: 0;
+            }
+
+            .info-text {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              flex: 1;
+              overflow: hidden;
+              color: $text-strong;
+              text-overflow: ellipsis;
+              font-family: $font-satoshi;
+              font-size: $font-size-xs;
+              font-weight: $font-weight-medium;
+              line-height: 160%;
+            }
+
+            .copy-icon-button {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: none;
+              background: transparent;
+              padding: 0;
+              cursor: pointer;
+              transition: opacity 0.2s;
+
+              &:hover {
+                opacity: 0.7;
+              }
+
+              svg {
+                width: 16px;
+                height: 16px;
+              }
+            }
+          }
+        }
+      }
+
+      .step-divider {
+        display: flex;
+        padding: $space-2 0;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+
+        &::after {
+          content: '';
+          height: 1px;
+          align-self: stretch;
+          background: $border-default;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .pix-info-sheet {
+    max-width: 768px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+
+    &.open {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}

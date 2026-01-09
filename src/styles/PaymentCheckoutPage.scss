@@ -1,0 +1,319 @@
+@use 'tokens' as *;
+
+.payment-checkout-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-weak;
+
+  .checkout-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    position: relative;
+
+    .back-button {
+      display: flex;
+      width: 48px;
+      height: 48px;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      background: transparent;
+      border-radius: $radius-pill;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &:active {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .checkout-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: $text-strong;
+      text-align: center;
+      font-family: $font-satoshi;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+
+  .checkout-content {
+    flex: 1;
+    padding: 0 $space-4 160px;
+    overflow-y: auto;
+  }
+
+  .checkout-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .section-title {
+      color: $text-strong;
+      font-family: $font-satoshi;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-medium;
+      line-height: 1.3;
+      letter-spacing: -0.8px;
+      margin: 0;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .fee-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #FFF;
+      padding: 24px $space-4;
+      border-radius: $radius-lg;
+
+      .fee-label {
+        color: $text-medium;
+        font-family: $font-satoshi;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+      }
+
+      .fee-amount {
+        color: $text-strong;
+        font-family: $font-satoshi;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        line-height: 1.5;
+      }
+    }
+
+    .payment-methods-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: #FFF;
+      padding: $space-4;
+      border-radius: $radius-lg;
+
+      .methods-label {
+        color: $text-medium;
+        font-family: $font-satoshi;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .payment-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        cursor: pointer;
+        padding: 0;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &.add-card {
+          cursor: pointer;
+        }
+
+        .option-content {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          flex: 1;
+
+          .payment-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+          }
+
+          .option-label {
+            color: $text-strong;
+            font-family: $font-satoshi;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            line-height: 1.5;
+          }
+
+          .card-details {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+
+            .edit-icon {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        .radio-button {
+          display: flex;
+          width: 32px;
+          height: 32px;
+          align-items: center;
+          justify-content: center;
+
+          .radio-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid $border-weak;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+
+            &.checked {
+              border-color: $interaction-enable;
+
+              .radio-inner {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: $interaction-enable;
+              }
+            }
+          }
+        }
+
+        .add-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .divider {
+        height: 1px;
+        background-color: $interaction-enable-alpha;
+        margin: 0;
+      }
+    }
+
+    .info-callout {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 8px;
+      border-radius: 16px;
+
+      .info-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      .info-text {
+        color: $text-medium;
+        font-family: $font-satoshi;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-bold;
+        line-height: 1.6;
+        letter-spacing: 0.24px;
+        margin: 0;
+      }
+    }
+  }
+
+  .checkout-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid $border-weak;
+    background: $bg-default;
+    padding: 24px $space-4 40px;
+    box-shadow: 0 14px 64px -4px rgba(17, 17, 17, 0.08), 0 8px 22px -6px rgba(17, 17, 17, 0.12);
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .total-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        .total-label {
+          color: $text-medium;
+          font-family: $font-satoshi;
+          font-size: $font-size-base;
+          font-weight: $font-weight-bold;
+          line-height: 1.5;
+        }
+
+        .total-amount {
+          color: $text-strong;
+          font-family: $font-satoshi;
+          font-size: 18px;
+          font-weight: $font-weight-bold;
+          line-height: 1.5;
+        }
+      }
+
+      .payment-button {
+        display: flex;
+        min-width: 64px;
+        min-height: 48px;
+        max-height: 48px;
+        padding: 0 $space-4;
+        justify-content: center;
+        align-items: center;
+        gap: $space-2;
+        border-radius: $radius-pill;
+        background: $interaction-enable;
+        color: $text-inverted;
+        border: none;
+        cursor: pointer;
+        font-family: $font-satoshi;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        transition: all 0.2s;
+
+        &:hover {
+          background: #0557B8;
+        }
+
+        &:active {
+          background: #044899;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .payment-checkout-page {
+    max-width: 768px;
+    margin: 0 auto;
+
+    .checkout-footer {
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 768px;
+    }
+  }
+}

@@ -1,0 +1,238 @@
+@use 'tokens' as *;
+
+.payment-pix-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-weak;
+
+  .pix-header {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    gap: 8px;
+    position: relative;
+
+    .back-button {
+      display: flex;
+      width: 48px;
+      height: 48px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      background: transparent;
+      border-radius: $radius-pill;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &:active {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .pix-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      color: $text-strong;
+      text-align: center;
+      font-family: $font-satoshi;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+
+  .pix-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0 $space-4 140px;
+    overflow-y: auto;
+
+    .pix-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      align-self: stretch;
+      background: $bg-default;
+      padding: 16px;
+      border-radius: $radius-lg;
+
+      .pix-instruction {
+        color: $text-strong;
+        text-align: center;
+        font-family: $font-satoshi;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        margin: 0;
+        align-self: stretch;
+      }
+
+      .qr-code {
+        width: 256px;
+        height: 256px;
+        aspect-ratio: 1/1;
+      }
+
+      .copy-button {
+        display: flex;
+        min-width: 64px;
+        min-height: 48px;
+        max-height: 48px;
+        padding: 0 $space-4;
+        justify-content: center;
+        align-items: center;
+        gap: $space-2;
+        align-self: stretch;
+        border-radius: $radius-pill;
+        background: $interaction-enable;
+        color: $text-inverted;
+        border: none;
+        cursor: pointer;
+        font-family: $font-satoshi;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        transition: all 0.2s;
+
+        &:hover {
+          background: #0557B8;
+        }
+
+        &:active {
+          background: #044899;
+        }
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    .instructions-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      align-self: stretch;
+      background: $bg-default;
+      padding: 16px;
+      border-radius: $radius-lg;
+
+      .instructions-title {
+        color: $text-strong;
+        font-family: $font-satoshi;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .instruction-steps {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        align-self: stretch;
+
+        .step {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          align-self: stretch;
+
+          .step-number {
+            width: 20px;
+            color: $text-medium;
+            font-family: $font-satoshi;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            line-height: 1.5;
+          }
+
+          .step-text {
+            flex: 1;
+            color: $text-medium;
+            font-family: $font-satoshi;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            line-height: 1.5;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .pix-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid $border-weak;
+    background: $bg-default;
+    padding: 24px $space-4 40px;
+    box-shadow: 0 14px 64px -4px rgba(17, 17, 17, 0.08), 0 8px 22px -6px rgba(17, 17, 17, 0.12);
+    z-index: 10;
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+
+      .total-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        .total-label {
+          color: $text-medium;
+          font-family: $font-satoshi;
+          font-size: $font-size-base;
+          font-weight: $font-weight-bold;
+          line-height: 1.5;
+        }
+
+        .total-amount {
+          color: $text-strong;
+          font-family: $font-satoshi;
+          font-size: 18px;
+          font-weight: $font-weight-bold;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .payment-pix-page {
+    max-width: 768px;
+    margin: 0 auto;
+
+    .pix-footer {
+      max-width: 768px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
