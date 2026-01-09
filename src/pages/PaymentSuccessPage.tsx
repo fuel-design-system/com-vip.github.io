@@ -7,8 +7,6 @@ export default function PaymentSuccessPage() {
   const method = searchParams.get('method');
 
   const handleClose = () => {
-    // Clear the pending payment flag
-    sessionStorage.removeItem('negotiationCompleted');
     navigate('/');
   };
 
