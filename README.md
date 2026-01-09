@@ -5,7 +5,7 @@ Aplicativo para gestão de fretes.
 ## 🌐 URL de Produção
 
 ```
-https://fuel-design-system.github.io/sem-vip.github.io/
+https://fuel-design-system.github.io/com-vip.github.io/
 ```
 
 ## 🚨 Tela em Branco Após Deploy?
@@ -13,7 +13,7 @@ https://fuel-design-system.github.io/sem-vip.github.io/
 Se a tela ficar em branco após fazer deploy, acesse:
 
 ```
-https://fuel-design-system.github.io/sem-vip.github.io/force-reload.html
+https://fuel-design-system.github.io/com-vip.github.io/force-reload.html
 ```
 
 Esta página vai limpar automaticamente todo o cache antigo e recarregar a aplicação.
@@ -34,7 +34,7 @@ npm run preview
 
 O preview local estará disponível em:
 ```
-http://localhost:4173/sem-vip.github.io/
+http://localhost:4173/com-vip.github.io/
 ```
 
 ## 🚢 Deploy para GitHub Pages
@@ -45,7 +45,7 @@ Veja o guia completo em [DEPLOY-GITHUB-PAGES.md](./DEPLOY-GITHUB-PAGES.md)
 1. Execute `npm run build`
 2. Faça commit dos arquivos em `dist/`
 3. Configure GitHub Pages para usar a branch/pasta correta
-4. Acesse `https://fuel-design-system.github.io/sem-vip.github.io/`
+4. Acesse `https://fuel-design-system.github.io/com-vip.github.io/`
 
 ## 📖 Documentação
 
@@ -86,7 +86,7 @@ public/
 
 **Solução Rápida:**
 ```
-https://fuel-design-system.github.io/sem-vip.github.io/force-reload.html
+https://fuel-design-system.github.io/com-vip.github.io/force-reload.html
 ```
 
 **Solução Manual:**
@@ -103,7 +103,7 @@ https://fuel-design-system.github.io/sem-vip.github.io/force-reload.html
 **Solução:**
 Verifique se `vite.config.ts` tem:
 ```typescript
-base: '/sem-vip.github.io/',  // ✅ Correto
+base: '/com-vip.github.io/',  // ✅ Correto
 // base: '/',  ❌ Errado para GitHub Pages
 ```
 
@@ -125,7 +125,7 @@ Acesse `/force-reload.html` para remover automaticamente.
 
 ```typescript
 export default defineConfig({
-  base: '/sem-vip.github.io/',  // ⚠️ OBRIGATÓRIO para GitHub Pages!
+  base: '/com-vip.github.io/',  // ⚠️ OBRIGATÓRIO para GitHub Pages!
   // ...
 });
 ```
@@ -146,7 +146,7 @@ export default defineConfig({
 
 3. **Acesse:**
    ```
-   http://localhost:4173/sem-vip.github.io/
+   http://localhost:4173/com-vip.github.io/
    ```
 
 4. **Verifique:**
@@ -159,7 +159,7 @@ export default defineConfig({
 
 Antes de fazer deploy:
 
-- [ ] `vite.config.ts` tem `base: '/sem-vip.github.io/'`
+- [ ] `vite.config.ts` tem `base: '/com-vip.github.io/'`
 - [ ] Build local funciona sem erros
 - [ ] Preview local funciona corretamente
 - [ ] Todas as rotas funcionam no preview
@@ -177,8 +177,8 @@ Se algo der errado:
 
 ## 🔗 Links Úteis
 
-- **Produção:** https://fuel-design-system.github.io/sem-vip.github.io/
-- **Limpar Cache:** https://fuel-design-system.github.io/sem-vip.github.io/force-reload.html
+- **Produção:** https://fuel-design-system.github.io/com-vip.github.io/
+- **Limpar Cache:** https://fuel-design-system.github.io/com-vip.github.io/force-reload.html
 - **Repositório:** (adicione o link do GitHub aqui)
 
 ## 📝 Licença

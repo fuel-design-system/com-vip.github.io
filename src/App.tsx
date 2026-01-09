@@ -38,7 +38,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/sem-vip.github.io">
+    <BrowserRouter basename="/com-vip.github.io">
       <AppRoutes />
     </BrowserRouter>
   );
