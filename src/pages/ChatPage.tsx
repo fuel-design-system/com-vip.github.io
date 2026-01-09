@@ -218,6 +218,9 @@ export default function ChatPage() {
           };
 
           setMessages(prev => [...prev, tripConfirmedMessage]);
+
+          // Marca a etapa 3 como concluída
+          setCompletedTabs(prev => prev.includes(3) ? prev : [...prev, 3]);
         }, 5000);
       }, 3000);
 
