@@ -31,21 +31,19 @@ export default function PaymentFeePage() {
       <div className="page-content">
         <h1 className="page-title">Fechando o frete na Fretebras, será cobrada a taxa de serviço de R$ 49,90</h1>
 
-        <div className="content-container">
-          {/* VIP Fee Card */}
-          <div className="vip-fee-card">
-            <div className="vip-badge">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.7407 8.1278L9.77591 4.02051H10.0163L12.239 8.1278H7.7407ZM9.62841 16.7609L2.60612 8.87155H9.62841V16.7609ZM10.3722 16.7609V8.87155H17.3945L10.3722 16.7609ZM13.0836 8.1278L10.699 3.70801H15.8722L17.6236 8.1278H13.0836ZM2.37695 8.1278L4.12841 3.70801H9.11404L6.89612 8.1278H2.37695Z" fill="white"/>
-              </svg>
-              <span className="vip-badge-text">Você é VIP e não paga</span>
-            </div>
-            <div className="fee-row">
-              <div className="fee-label">Valor da taxa:</div>
-              <div className="fee-values">
-                <div className="fee-original">R$ 49,90</div>
-                <div className="fee-discounted">R$ 0,00</div>
-              </div>
+        {/* VIP Fee Card */}
+        <div className="vip-fee-card">
+          <div className="vip-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.7407 8.1278L9.77591 4.02051H10.0163L12.239 8.1278H7.7407ZM9.62841 16.7609L2.60612 8.87155H9.62841V16.7609ZM10.3722 16.7609V8.87155H17.3945L10.3722 16.7609ZM13.0836 8.1278L10.699 3.70801H15.8722L17.6236 8.1278H13.0836ZM2.37695 8.1278L4.12841 3.70801H9.11404L6.89612 8.1278H2.37695Z" fill="white"/>
+            </svg>
+            <span className="vip-badge-text">Você é VIP e não paga</span>
+          </div>
+          <div className="fee-row">
+            <div className="fee-label">Valor da taxa:</div>
+            <div className="fee-values">
+              <div className="fee-original">R$ 49,90</div>
+              <div className="fee-discounted">R$ 0,00</div>
             </div>
           </div>
         </div>
