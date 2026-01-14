@@ -72,6 +72,32 @@ export default function FreightDetail() {
           </div>
         </div>
 
+        {/* Service Fee Card */}
+        <div className="detail-card service-fee-card">
+          <div className="fee-header-text">
+            Uma taxa de serviço será cobrada caso você carregue esse frete
+          </div>
+          <div className="fee-info-card">
+            <div className="fee-content">
+              <div className="fee-label-section">
+                <div className="fee-label">Valor da taxa:</div>
+                <a href="#" className="learn-more-link">Saiba mais</a>
+              </div>
+              <div className="fee-price-section">
+                <div className="price-strikethrough">R$ 49,90</div>
+                <div className="price-free">(Grátis)</div>
+              </div>
+            </div>
+          </div>
+          <div className="fee-divider"></div>
+          <div className="vip-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.73875 8.1278L9.77396 4.02051H10.0144L12.2371 8.1278H7.73875ZM9.62646 16.7609L2.60417 8.87155H9.62646V16.7609ZM10.3702 16.7609V8.87155H17.3925L10.3702 16.7609ZM13.0817 8.1278L10.6971 3.70801H15.8702L17.6217 8.1278H13.0817ZM2.375 8.1278L4.12646 3.70801H9.11208L6.89417 8.1278H2.375Z" fill="#0769DA"/>
+            </svg>
+            <div className="vip-text">Você economizou por ser um Motorista VIP</div>
+          </div>
+        </div>
+
         {/* Cargo Card */}
         <div className="detail-card">
           <div className="cargo-section">
