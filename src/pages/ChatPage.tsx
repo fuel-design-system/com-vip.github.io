@@ -87,6 +87,7 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasAddedDocumentMessage = useRef(false);
   const hasOpenedFeeSheet = useRef(false);
+  const hasSentFeeMessages = useRef(false);
 
   // Salva estados importantes no sessionStorage
   useEffect(() => {
