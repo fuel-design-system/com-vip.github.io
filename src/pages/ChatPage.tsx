@@ -191,6 +191,54 @@ export default function ChatPage() {
         }
       }, 3000);
 
+      // Após 5 segundos, envia a mensagem de revisão do acordo
+      setTimeout(() => {
+        if (hasSentFeeMessages.current) return;
+        hasSentFeeMessages.current = true;
+
+        const now2 = new Date();
+        const hours2 = String(now2.getHours()).padStart(2, '0');
+        const minutes2 = String(now2.getMinutes()).padStart(2, '0');
+        const timestamp2 = `${hours2}:${minutes2}`;
+
+        const agreementReviewMessage: Message = {
+          id: String(Date.now()),
+          sender: 'user',
+          text: '',
+          timestamp: timestamp2,
+          isRead: true,
+          type: 'agreement-review',
+        };
+
+        setMessages(prev => [...prev, agreementReviewMessage]);
+
+        // Marca a etapa 2 como concluída e ativa a etapa 3 (Fechamento)
+        setCompletedTabs(prev => prev.includes(2) ? prev : [...prev, 2]);
+        setCurrentStep(3);
+
+        // Após mais 5 segundos, envia mensagem de confirmação de viagem
+        setTimeout(() => {
+          const now3 = new Date();
+          const hours3 = String(now3.getHours()).padStart(2, '0');
+          const minutes3 = String(now3.getMinutes()).padStart(2, '0');
+          const timestamp3 = `${hours3}:${minutes3}`;
+
+          const tripConfirmedMessage: Message = {
+            id: String(Date.now()),
+            sender: 'user',
+            text: '',
+            timestamp: timestamp3,
+            isRead: true,
+            type: 'trip-confirmed',
+          };
+
+          setMessages(prev => [...prev, tripConfirmedMessage]);
+
+          // Marca a etapa 3 como concluída
+          setCompletedTabs(prev => prev.includes(3) ? prev : [...prev, 3]);
+        }, 5000);
+      }, 5000);
+
       // Limpa o state para não adicionar a mensagem novamente
       navigate(location.pathname, { replace: true, state: {} });
     }
@@ -202,56 +250,8 @@ export default function ChatPage() {
   };
 
   const handleFeeSheetContinue = () => {
-    // Evita enviar mensagens duplicadas
-    if (hasSentFeeMessages.current) return;
-    hasSentFeeMessages.current = true;
-
+    // Apenas fecha o sheet, as mensagens já aparecem automaticamente
     setIsFeeSheetOpen(false);
-
-    // Após fechar o sheet, envia a mensagem de revisão do acordo
-    setTimeout(() => {
-      const now2 = new Date();
-      const hours2 = String(now2.getHours()).padStart(2, '0');
-      const minutes2 = String(now2.getMinutes()).padStart(2, '0');
-      const timestamp2 = `${hours2}:${minutes2}`;
-
-      const agreementReviewMessage: Message = {
-        id: String(Date.now()),
-        sender: 'user',
-        text: '',
-        timestamp: timestamp2,
-        isRead: true,
-        type: 'agreement-review',
-      };
-
-      setMessages(prev => [...prev, agreementReviewMessage]);
-
-      // Marca a etapa 2 como concluída e ativa a etapa 3 (Fechamento)
-      setCompletedTabs(prev => prev.includes(2) ? prev : [...prev, 2]);
-      setCurrentStep(3);
-
-      // Após mais 5 segundos, envia mensagem de confirmação de viagem
-      setTimeout(() => {
-        const now3 = new Date();
-        const hours3 = String(now3.getHours()).padStart(2, '0');
-        const minutes3 = String(now3.getMinutes()).padStart(2, '0');
-        const timestamp3 = `${hours3}:${minutes3}`;
-
-        const tripConfirmedMessage: Message = {
-          id: String(Date.now()),
-          sender: 'user',
-          text: '',
-          timestamp: timestamp3,
-          isRead: true,
-          type: 'trip-confirmed',
-        };
-
-        setMessages(prev => [...prev, tripConfirmedMessage]);
-
-        // Marca a etapa 3 como concluída
-        setCompletedTabs(prev => prev.includes(3) ? prev : [...prev, 3]);
-      }, 5000);
-    }, 500);
   };
 
   // Script de conversa com etapas definidas
