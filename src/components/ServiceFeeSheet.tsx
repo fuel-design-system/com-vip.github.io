@@ -37,9 +37,17 @@ export default function ServiceFeeSheet({ isOpen, onClose, onContinue }: Service
   };
 
   const handleSendWhatsApp = () => {
-    onContinue();
-    onClose();
+    // Abre o WhatsApp com a chave Pix
+    const pixKey = '7192d4fd-1d90-4b2c-90fa-67a4akfl';
+    const message = encodeURIComponent(`Olá! Segue minha chave Pix para recebimento do frete:\n\n${pixKey}`);
+    const whatsappUrl = `https://wa.me/?text=${message}`;
+
+    // Abre o WhatsApp em uma nova aba
+    window.open(whatsappUrl, '_blank');
+
+    // Fecha o sheet e dispara o fluxo de mensagens
     setShowPixView(false);
+    onContinue();
   };
 
   const handleCopyPix = () => {

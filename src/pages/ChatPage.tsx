@@ -195,8 +195,19 @@ export default function ChatPage() {
     }
   }, [location.state, location.pathname, navigate]);
 
+  // Ref para garantir que as mensagens só sejam enviadas uma vez
+  const hasSentFeeMessages = useRef(false);
+
   // Continua o fluxo após fechar o bottom sheet de taxa
   const handleFeeSheetClose = () => {
+    setIsFeeSheetOpen(false);
+  };
+
+  const handleFeeSheetContinue = () => {
+    // Evita enviar mensagens duplicadas
+    if (hasSentFeeMessages.current) return;
+    hasSentFeeMessages.current = true;
+
     setIsFeeSheetOpen(false);
 
     // Após fechar o sheet, envia a mensagem de revisão do acordo
@@ -893,7 +904,7 @@ export default function ChatPage() {
       <ServiceFeeSheet
         isOpen={isFeeSheetOpen}
         onClose={handleFeeSheetClose}
-        onContinue={handleFeeSheetClose}
+        onContinue={handleFeeSheetContinue}
       />
     </div>
   );
