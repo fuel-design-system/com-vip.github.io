@@ -87,6 +87,7 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasAddedDocumentMessage = useRef(false);
   const hasOpenedFeeSheet = useRef(false);
+  const hasSentFeeMessages = useRef(false);
 
   // Salva estados importantes no sessionStorage
   useEffect(() => {
@@ -196,7 +197,17 @@ export default function ChatPage() {
   }, [location.state, location.pathname, navigate]);
 
   // Continua o fluxo após fechar o bottom sheet de taxa
+  const handleFeeSheetClose = () => {
+    setIsFeeSheetOpen(false);
+  };
+
   const handleFeeSheetContinue = () => {
+    // Evita enviar mensagens duplicadas
+    if (hasSentFeeMessages.current) return;
+    hasSentFeeMessages.current = true;
+
+    setIsFeeSheetOpen(false);
+
     // Após fechar o sheet, envia a mensagem de revisão do acordo
     setTimeout(() => {
       const now2 = new Date();
@@ -890,7 +901,7 @@ export default function ChatPage() {
 
       <ServiceFeeSheet
         isOpen={isFeeSheetOpen}
-        onClose={() => setIsFeeSheetOpen(false)}
+        onClose={handleFeeSheetClose}
         onContinue={handleFeeSheetContinue}
       />
     </div>
