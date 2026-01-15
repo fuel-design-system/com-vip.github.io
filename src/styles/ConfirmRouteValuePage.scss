@@ -188,7 +188,7 @@
       font-weight: 700;
       line-height: 150%;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.2s ease;
 
       &:hover {
         background: #0557B8;
@@ -196,7 +196,6 @@
 
       &:active {
         background: #044899;
-        transform: scale(0.98);
       }
     }
 
@@ -219,7 +218,7 @@
       font-weight: 500;
       line-height: 150%;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.2s ease;
 
       &:hover {
         background: rgba(0, 43, 92, 0.10);
@@ -227,7 +226,6 @@
 
       &:active {
         background: rgba(0, 43, 92, 0.14);
-        transform: scale(0.98);
       }
     }
   }
