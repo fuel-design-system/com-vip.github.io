@@ -196,9 +196,6 @@ export default function ChatPage() {
     }
   }, [location.state, location.pathname, navigate]);
 
-  // Ref para garantir que as mensagens só sejam enviadas uma vez
-  const hasSentFeeMessages = useRef(false);
-
   // Continua o fluxo após fechar o bottom sheet de taxa
   const handleFeeSheetClose = () => {
     setIsFeeSheetOpen(false);
