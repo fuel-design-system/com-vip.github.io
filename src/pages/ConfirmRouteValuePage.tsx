@@ -20,13 +20,13 @@ export default function ConfirmRouteValuePage() {
       return;
     }
 
-    // Se tem valor, navega para a próxima página (documentos)
-    navigate(`/freight/${freightId}/chat/${contactId}/documents`);
+    // Se tem valor, volta para o chat
+    navigate(`/freight/${freightId}/chat/${contactId}`);
   };
 
   const handleNotAgreed = () => {
-    // Permite continuar sem validação
-    navigate(`/freight/${freightId}/chat/${contactId}/documents`);
+    // Permite continuar sem validação, volta para o chat
+    navigate(`/freight/${freightId}/chat/${contactId}`);
   };
 
   // Currency mask function
