@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/ConfirmRouteValuePage.scss';
+import freightsData from '../data/freights.json';
 
 export default function ConfirmRouteValuePage() {
   const navigate = useNavigate();
@@ -8,6 +9,9 @@ export default function ConfirmRouteValuePage() {
   const [freightValue, setFreightValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [hasError, setHasError] = useState(false);
+
+  // Busca os dados do frete
+  const freight = freightsData.find(f => f.id === Number(freightId));
 
   const handleBackClick = () => {
     navigate(-1);
@@ -77,11 +81,31 @@ export default function ConfirmRouteValuePage() {
 
       {/* Content */}
       <div className="page-content">
-        <h1 className="page-title">Confirme o valor combinado</h1>
+        <h1 className="page-title">Confirme a rota e o valor combinado</h1>
 
         <div className="content-container">
           {/* Value Input Card */}
           <div className="value-card">
+            {/* Route Section */}
+            <div className="route-section">
+              <div className="route-label">Rota</div>
+              <div className="route-display">
+                <svg className="route-icon" width="7" height="52" viewBox="0 0 7 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="3.5" cy="8.5" r="3" stroke="#BABEC9"/>
+                  <rect x="3" y="16" width="1" height="20" fill="#BABEC9"/>
+                  <path d="M6.19141 40.5L3.5 45.8818L0.808594 40.5H6.19141Z" stroke="#BABEC9"/>
+                </svg>
+                <div className="route-cities">
+                  <div className="city-name">{freight?.origin || 'Origem'}</div>
+                  <div className="city-name">{freight?.destination || 'Destino'}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="card-divider"></div>
+
+            {/* Value Section */}
             <div className="value-section">
               <div className={`input-wrapper ${isFocused || hasValue ? 'focused' : ''} ${hasError ? 'error' : ''}`}>
                 <input
