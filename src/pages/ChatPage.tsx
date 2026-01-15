@@ -196,7 +196,9 @@ export default function ChatPage() {
   }, [location.state, location.pathname, navigate]);
 
   // Continua o fluxo após fechar o bottom sheet de taxa
-  const handleFeeSheetContinue = () => {
+  const handleFeeSheetClose = () => {
+    setIsFeeSheetOpen(false);
+
     // Após fechar o sheet, envia a mensagem de revisão do acordo
     setTimeout(() => {
       const now2 = new Date();
@@ -890,8 +892,8 @@ export default function ChatPage() {
 
       <ServiceFeeSheet
         isOpen={isFeeSheetOpen}
-        onClose={() => setIsFeeSheetOpen(false)}
-        onContinue={handleFeeSheetContinue}
+        onClose={handleFeeSheetClose}
+        onContinue={handleFeeSheetClose}
       />
     </div>
   );
