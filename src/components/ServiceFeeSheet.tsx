@@ -36,19 +36,6 @@ export default function ServiceFeeSheet({ isOpen, onClose, onContinue }: Service
     setShowPixView(true);
   };
 
-  const handleSendWhatsApp = () => {
-    // Abre o WhatsApp com a chave Pix
-    const pixKey = '7192d4fd-1d90-4b2c-90fa-67a4akfl';
-    const message = encodeURIComponent(`Olá! Segue minha chave Pix para recebimento do frete:\n\n${pixKey}`);
-    const whatsappUrl = `https://wa.me/?text=${message}`;
-
-    // Abre o WhatsApp em uma nova aba
-    window.open(whatsappUrl, '_blank');
-
-    // Fecha o sheet e dispara o fluxo de mensagens
-    setShowPixView(false);
-    onContinue();
-  };
 
   const handleCopyPix = () => {
     const pixKey = '7192d4fd-1d90-4b2c-90fa-67a4akfl';
@@ -157,7 +144,7 @@ export default function ServiceFeeSheet({ isOpen, onClose, onContinue }: Service
               </div>
             </div>
 
-            <button className="whatsapp-button" onClick={handleSendWhatsApp}>
+            <button className="whatsapp-button">
               <span>Enviar no WhatsApp</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_whatsapp)">
