@@ -72,7 +72,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
     // Remove animation class after animation completes
     const timer = setTimeout(() => {
       setAnimationClass('');
-    }, 350);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [location.pathname, location.state]);

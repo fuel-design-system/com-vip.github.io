@@ -1,0 +1,509 @@
+.service-fee-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+
+  &.open {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.64);
+    pointer-events: all;
+  }
+}
+
+.service-fee-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 6px 12px -6px rgba(38, 47, 74, 0.12), 0 8px 24px -4px rgba(38, 47, 74, 0.08);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1001;
+  will-change: transform;
+
+  &.open {
+    transform: translateY(0);
+  }
+
+  .sheet-header {
+    display: flex;
+    padding: 8px 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    .holder {
+      width: 48px;
+      height: 4px;
+      border-radius: 50px;
+      background: #DDDFE4;
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+
+      .close-button {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.05);
+        }
+
+        &:active {
+          background: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+
+  .sheet-content {
+    display: flex;
+    padding: 0 20px 40px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+
+      &.hide {
+        display: none;
+        opacity: 0;
+      }
+    }
+
+    .pix-view-wrapper {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      &.show {
+        display: flex;
+        opacity: 1;
+      }
+    }
+
+    .title-card-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+
+      .sheet-title {
+        color: #111;
+        font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 130%;
+        letter-spacing: -0.8px;
+        margin: 0;
+
+        .highlight-text {
+          color: #0769DA;
+        }
+      }
+
+      .fee-card {
+        display: flex;
+        padding: 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        border-radius: 16px;
+        background: rgba(0, 43, 92, 0.06);
+        box-sizing: border-box;
+
+        .fee-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+          width: 100%;
+
+          .fee-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            width: 100%;
+
+            .fee-label {
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              flex: 1;
+              color: #636B7E;
+              font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 150%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .discount-label-wrapper {
+              display: flex;
+              align-items: center;
+              align-content: center;
+              gap: 4px;
+              flex: 1;
+              flex-wrap: wrap;
+
+              .vip-tag {
+                display: flex;
+                height: 20px;
+                min-width: 32px;
+                padding: 0 4px;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                border-radius: 4px;
+                background: #111;
+
+                span {
+                  color: #FFF;
+                  font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+                  font-size: 12px;
+                  font-weight: 500;
+                  line-height: 160%;
+                }
+              }
+            }
+
+            .fee-value-column {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              gap: 4px;
+
+              .fee-original-value {
+                color: #111;
+                font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 150%;
+                text-decoration: line-through;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              .fee-discount-value {
+                color: #0C884C;
+                font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 150%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+          }
+
+          .fee-divider {
+            display: flex;
+            padding: 16px 0;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 34px;
+            width: 100%;
+
+            &::after {
+              content: '';
+              height: 1px;
+              width: 100%;
+              background: #DDDFE4;
+            }
+          }
+
+          .fee-total-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            width: 100%;
+
+            .fee-total-row {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              width: 100%;
+
+              .fee-total-label {
+                flex: 1;
+                color: #111;
+                font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 150%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              .fee-total-value {
+                color: #111;
+                font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 150%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+
+            .fee-total-subtitle {
+              color: #636B7E;
+              font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+              font-size: 12px;
+              font-weight: 500;
+              line-height: 160%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+
+    .continue-button {
+      display: flex;
+      min-width: 64px;
+      min-height: 48px;
+      max-height: 48px;
+      padding: 0 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      border-radius: 500px;
+      background: #0769DA;
+      border: none;
+      color: #FFF;
+      text-align: center;
+      font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 150%;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #0557B8;
+      }
+
+      &:active {
+        background: #044899;
+      }
+    }
+
+    // Pix View Styles
+    .pix-title {
+      color: #111;
+      font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 130%;
+      letter-spacing: -0.8px;
+      margin: 0;
+      width: 100%;
+    }
+
+    .pix-card {
+      display: flex;
+      padding: 16px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+      border-radius: 16px;
+      background: rgba(0, 43, 92, 0.06);
+      overflow: hidden;
+      box-sizing: border-box;
+
+      .pix-key-section {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+
+        .pix-text-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+          flex: 1;
+
+          .pix-label {
+            color: #636B7E;
+            font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 150%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+          }
+
+          .pix-key-display {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+
+            svg {
+              flex-shrink: 0;
+            }
+
+            .pix-key-value {
+              flex: 1;
+              color: #111;
+              font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+              font-size: 14px;
+              font-weight: 700;
+              line-height: 150%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+
+        .copy-button {
+          display: flex;
+          min-width: 64px;
+          min-height: 32px;
+          max-height: 32px;
+          padding: 0 12px;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          border-radius: 500px;
+          background: rgba(0, 43, 92, 0.06);
+          border: none;
+          cursor: pointer;
+          transition: background 0.2s ease;
+
+          span {
+            color: #111;
+            text-align: center;
+            font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 160%;
+          }
+
+          &:hover {
+            background: rgba(0, 43, 92, 0.10);
+          }
+
+          &:active {
+            background: rgba(0, 43, 92, 0.14);
+          }
+        }
+      }
+
+      .pix-divider {
+        height: 1px;
+        width: 100%;
+        background: rgba(0, 43, 92, 0.06);
+      }
+
+      .transfer-info {
+        color: #636B7E;
+        font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 150%;
+        width: 100%;
+
+        .transfer-info-bold {
+          font-weight: 700;
+          color: #111;
+        }
+
+        .transfer-info-regular {
+          font-weight: 500;
+          color: #636B7E;
+        }
+      }
+    }
+
+    .whatsapp-button {
+      display: flex;
+      min-width: 64px;
+      min-height: 48px;
+      max-height: 48px;
+      padding: 0 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      border-radius: 100px;
+      background: #0769DA;
+      border: none;
+      color: #FFF;
+      text-align: center;
+      font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 150%;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #0557B8;
+      }
+
+      &:active {
+        background: #044899;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .service-fee-sheet {
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    max-width: 500px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &.open {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}

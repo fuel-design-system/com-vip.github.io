@@ -9,28 +9,32 @@
 
 // Forward navigation - slide in from right
 .slide-in-forward {
-  animation: slideInFromRight 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: slideInFromRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// Backward navigation - slide in from left  
+// Backward navigation - slide in from left
 .slide-in-backward {
-  animation: slideInFromLeft 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: slideInFromLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes slideInFromRight {
   from {
     transform: translateX(100%);
+    opacity: 0.8;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideInFromLeft {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-30%);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
