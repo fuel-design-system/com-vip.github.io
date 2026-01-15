@@ -65,6 +65,57 @@
       padding: 16px;
     }
 
+    .route-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .route-label {
+        color: #636B7E;
+        font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 160%;
+        letter-spacing: 0.24px;
+      }
+
+      .route-display {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .route-icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          align-self: stretch;
+          padding: 5px 0;
+        }
+
+        .route-cities {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+          flex: 1;
+
+          .city-name {
+            color: #111;
+            font-family: Satoshi, -apple-system, Roboto, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 150%;
+          }
+        }
+      }
+    }
+
+    .card-divider {
+      width: 100%;
+      height: 1px;
+      background: #DFE1E6;
+    }
+
     .value-section {
       display: flex;
       flex-direction: column;
