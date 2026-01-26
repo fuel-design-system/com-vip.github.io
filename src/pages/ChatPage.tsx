@@ -4,6 +4,7 @@ import '../styles/ChatPage.scss';
 import freightsData from '../data/freights.json';
 import NegotiationStepsSheet from '../components/NegotiationStepsSheet';
 import Toast from '../components/Toast';
+import VipFeeBottomSheet from '../components/VipFeeBottomSheet';
 
 interface Contact {
   id: string;
@@ -80,6 +81,7 @@ export default function ChatPage() {
   const [isRouteCardExpanded, setIsRouteCardExpanded] = useState(false);
   const [isStepsSheetOpen, setIsStepsSheetOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [isVipFeeSheetOpen, setIsVipFeeSheetOpen] = useState(false);
   const [hasClickedDocumentButton, setHasClickedDocumentButton] = useState(() => {
     const saved = sessionStorage.getItem(`${chatStorageKey}_hasClickedDocButton`);
     return saved ? JSON.parse(saved) : false;
@@ -896,7 +898,13 @@ export default function ChatPage() {
       <Toast
         isVisible={showToast}
         onClose={() => setShowToast(false)}
+        onLearnMore={() => setIsVipFeeSheetOpen(true)}
         autoCloseDuration={10000}
+      />
+
+      <VipFeeBottomSheet
+        isOpen={isVipFeeSheetOpen}
+        onClose={() => setIsVipFeeSheetOpen(false)}
       />
     </div>
   );
