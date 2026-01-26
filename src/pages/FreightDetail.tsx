@@ -292,6 +292,7 @@ export default function FreightDetail() {
       <div className="bottom-bar">
         <div className="bottom-price">
           <div className="price-value">R$ {freight.price}</div>
+          <div className="fee-exemption-info">Não paga a taxa de serviço!</div>
           <div className="price-details">
             <span className="toll-info">Pedágio incluso</span>
             <div className="antt-badge">
