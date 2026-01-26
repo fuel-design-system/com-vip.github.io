@@ -233,15 +233,6 @@ export default function ChatPage() {
     }
   }, [location.state, location.pathname, navigate]);
 
-  // Continua o fluxo após fechar o bottom sheet de taxa
-  const handleFeeSheetClose = () => {
-    setIsFeeSheetOpen(false);
-  };
-
-  const handleFeeSheetContinue = () => {
-    // Apenas fecha o sheet, as mensagens já aparecem automaticamente
-    setIsFeeSheetOpen(false);
-  };
 
   // Script de conversa com etapas definidas
   const conversationFlowSteps = [
