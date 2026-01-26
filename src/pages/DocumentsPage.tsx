@@ -12,7 +12,9 @@ export default function DocumentsPage() {
   };
 
   const handleContinue = () => {
-    navigate(`/freight/${freightId}/chat/${contactId}/confirm`);
+    navigate(`/freight/${freightId}/chat/${contactId}`, {
+      state: { documentsSubmitted: true }
+    });
   };
 
   return (
@@ -75,8 +77,7 @@ export default function DocumentsPage() {
                 </div>
                 <div className="item-info">
                   <div className="item-title">Seu Pix</div>
-                  <div className="item-description">41226f99-2f4f-486d-b515-b0b223</div>
-                  <button className="link-button">Alterar</button>
+                  <div className="item-description">Chave aleatória</div>
                 </div>
                 <div className="required-badge">Obrigatório</div>
               </div>
@@ -159,7 +160,7 @@ export default function DocumentsPage() {
       {/* Bottom Button */}
       <div className="bottom-button-container">
         <button className="continue-button" onClick={handleContinue}>
-          Continuar
+          Enviar documentos
         </button>
       </div>
     </div>

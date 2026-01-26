@@ -1,29 +1,36 @@
 import { useEffect } from 'react';
-import './Toast.scss';
+import '../styles/Toast.scss';
 
 interface ToastProps {
-  message: string;
   isVisible: boolean;
   onClose: () => void;
-  duration?: number;
+  onLearnMore?: () => void;
+  autoCloseDuration?: number;
 }
 
-export default function Toast({ message, isVisible, onClose, duration = 3000 }: ToastProps) {
+export default function Toast({ isVisible, onClose, onLearnMore, autoCloseDuration = 10000 }: ToastProps) {
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && autoCloseDuration > 0) {
       const timer = setTimeout(() => {
         onClose();
-      }, duration);
+      }, autoCloseDuration);
 
       return () => clearTimeout(timer);
     }
-  }, [isVisible, onClose, duration]);
+  }, [isVisible, autoCloseDuration, onClose]);
 
   if (!isVisible) return null;
 
   return (
-    <div className={`toast ${isVisible ? 'toast-visible' : ''}`}>
-      <span className="toast-message">{message}</span>
+    <div className={`toast-container ${isVisible ? 'visible' : ''}`}>
+      <div className="toast-content">
+        <div className="toast-text">
+          Você economizou R$ 29,90 da taxa de serviço por ser VIP!
+        </div>
+        <button className="toast-button" onClick={onLearnMore}>
+          Saiba mais
+        </button>
+      </div>
     </div>
   );
 }
