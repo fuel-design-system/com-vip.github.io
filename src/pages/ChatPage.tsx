@@ -3,7 +3,6 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import '../styles/ChatPage.scss';
 import freightsData from '../data/freights.json';
 import NegotiationStepsSheet from '../components/NegotiationStepsSheet';
-import ServiceFeeSheet from '../components/ServiceFeeSheet';
 
 interface Contact {
   id: string;
@@ -79,14 +78,12 @@ export default function ChatPage() {
   });
   const [isRouteCardExpanded, setIsRouteCardExpanded] = useState(false);
   const [isStepsSheetOpen, setIsStepsSheetOpen] = useState(false);
-  const [isFeeSheetOpen, setIsFeeSheetOpen] = useState(false);
   const [hasClickedDocumentButton, setHasClickedDocumentButton] = useState(() => {
     const saved = sessionStorage.getItem(`${chatStorageKey}_hasClickedDocButton`);
     return saved ? JSON.parse(saved) : false;
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasAddedDocumentMessage = useRef(false);
-  const hasOpenedFeeSheet = useRef(false);
   const hasSentFeeMessages = useRef(false);
 
   // Salva estados importantes no sessionStorage
@@ -183,15 +180,7 @@ export default function ChatPage() {
       setCompletedTabs(prev => prev.includes(1) ? prev : [...prev, 1]);
       setCurrentStep(2);
 
-      // Após 3 segundos, abre o bottom sheet de taxa de serviço
-      setTimeout(() => {
-        if (!hasOpenedFeeSheet.current) {
-          hasOpenedFeeSheet.current = true;
-          setIsFeeSheetOpen(true);
-        }
-      }, 3000);
-
-      // Após 5 segundos, envia a mensagem de revisão do acordo
+      // Após 3 segundos, envia a mensagem de revisão do acordo
       setTimeout(() => {
         if (hasSentFeeMessages.current) return;
         hasSentFeeMessages.current = true;
@@ -237,7 +226,7 @@ export default function ChatPage() {
           // Marca a etapa 3 como concluída
           setCompletedTabs(prev => prev.includes(3) ? prev : [...prev, 3]);
         }, 5000);
-      }, 5000);
+      }, 3000);
 
       // Limpa o state para não adicionar a mensagem novamente
       navigate(location.pathname, { replace: true, state: {} });
