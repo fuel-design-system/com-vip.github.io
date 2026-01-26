@@ -4,10 +4,11 @@ import '../styles/Toast.scss';
 interface ToastProps {
   isVisible: boolean;
   onClose: () => void;
+  onLearnMore?: () => void;
   autoCloseDuration?: number;
 }
 
-export default function Toast({ isVisible, onClose, autoCloseDuration = 10000 }: ToastProps) {
+export default function Toast({ isVisible, onClose, onLearnMore, autoCloseDuration = 10000 }: ToastProps) {
   useEffect(() => {
     if (isVisible && autoCloseDuration > 0) {
       const timer = setTimeout(() => {
@@ -26,7 +27,7 @@ export default function Toast({ isVisible, onClose, autoCloseDuration = 10000 }:
         <div className="toast-text">
           Você economizou R$ 29,90 da taxa de serviço por ser VIP!
         </div>
-        <button className="toast-button">
+        <button className="toast-button" onClick={onLearnMore}>
           Saiba mais
         </button>
       </div>
