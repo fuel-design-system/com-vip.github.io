@@ -688,8 +688,7 @@ export default function ChatPage() {
           messages.some(msg => msg.type === 'trip-confirmed') ? (
             <div className="pix-copy-bar">
               <div className="pix-text">
-                <span className="pix-text-bold">Copie seu Pix </span>
-                <span className="pix-text-regular">para receber o pagamento na sua carteira Fretebras</span>
+                <span className="pix-text-regular">Envie seu Pix para a empresa pagar o adiantamento na Carteira Fretebras e tenha mais segurança contra golpes!</span>
               </div>
               <button className="pix-copy-button">
                 <span className="button-label">Copiar Pix</span>
