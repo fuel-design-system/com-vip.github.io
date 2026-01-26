@@ -887,12 +887,6 @@ export default function ChatPage() {
         currentStep={currentStep}
         completedTabs={completedTabs}
       />
-
-      <ServiceFeeSheet
-        isOpen={isFeeSheetOpen}
-        onClose={handleFeeSheetClose}
-        onContinue={handleFeeSheetContinue}
-      />
     </div>
   );
 }
